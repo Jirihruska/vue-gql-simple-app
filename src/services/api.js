@@ -2,16 +2,16 @@ import axios from "axios";
 
 export const api = async (graphqlQuery) => {
   let res;
+  console.log(process.env.VUE_APP_FRONTEND_URL);
   try {
     await axios({
       baseURL: process.env.VUE_APP_BACKEND_URL,
-      mode: "cors",
       method: "post",
       headers: {
         "Access-Control-Allow-Headers":
           "origin, x-requested-with, content-type",
         "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
+        "content-type": "text/plain",
         "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
         "Access-Control-Allow-Credentials": true,
       },
