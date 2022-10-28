@@ -3,7 +3,7 @@ import axios from "axios";
 export const api = async (graphqlQuery) => {
   const headers = {
     "content-type": "application/json",
-    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": `${process.env.VUE_APP_BACKEND_URL}`,
   };
   const endpoint = process.env.VUE_APP_BACKEND_URL;
   let res;
