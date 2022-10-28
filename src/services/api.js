@@ -5,10 +5,13 @@ export const api = async (graphqlQuery) => {
   try {
     await axios({
       baseURL: process.env.VUE_APP_BACKEND_URL,
-      mode: "no-cors",
+      mode: "cors",
       method: "post",
       headers: {
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Methods": "GET,POST",
+        "Access-Control-Allow-Credentials": true,
       },
       data: graphqlQuery,
     }).then((data) => {
