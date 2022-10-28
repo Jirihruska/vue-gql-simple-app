@@ -8,9 +8,11 @@ export const api = async (graphqlQuery) => {
       mode: "cors",
       method: "post",
       headers: {
+        "Access-Control-Allow-Headers":
+          "origin, x-requested-with, content-type",
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Methods": "GET,POST",
+        "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
         "Access-Control-Allow-Credentials": true,
       },
       data: graphqlQuery,
