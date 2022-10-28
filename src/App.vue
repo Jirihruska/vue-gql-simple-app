@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div
+    class="flex flex-wrap justify-center text-center"
+    v-if="data && data.categories"
+  >
+    <div
+      class="flex justify-center"
+      v-for="category in data.categories.items"
+      :key="category.id"
+    >
+      <Category v-if="!!category.image" :category="category" />
+    </div>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { onBeforeMount, ref } from "vue";
+import { categoriesQuery } from "./services/queries";
+import { api } from "./services/api";
+import "./style.css";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const data = ref();
+onBeforeMount(async () => {
+  data.value = await api(categoriesQuery);
+});
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<script>
+import Category from "./components/Category.vue";
+export default {
+  components: { Category },
+};
+</script>
