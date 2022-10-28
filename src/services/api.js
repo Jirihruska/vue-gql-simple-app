@@ -5,7 +5,14 @@ export const api = async (graphqlQuery) => {
   try {
     await axios({
       url: process.env.VUE_APP_BACKEND_URL,
+      mode: "cors",
       method: "post",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+        "Access-Control-Allow-Headers":
+          "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+      },
       data: graphqlQuery,
     }).then((data) => {
       if (data.status === 200) {
