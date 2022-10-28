@@ -5,7 +5,7 @@ export const api = async (graphqlQuery) => {
   try {
     await axios({
       baseURL: process.env.VUE_APP_BACKEND_URL,
-      mode: "cors",
+      mode: "no-cors",
       method: "post",
       headers: {
         "Content-Type": "application/json",
