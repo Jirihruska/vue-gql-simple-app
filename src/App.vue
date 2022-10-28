@@ -1,33 +1,13 @@
 <template>
-  <div
-    class="flex flex-wrap justify-center text-center"
-    v-if="data && data.categories"
-  >
-    <div
-      class="flex justify-center"
-      v-for="category in data.categories.items"
-      :key="category.id"
-    >
-      <Category v-if="!!category.image" :category="category" />
-    </div>
+  <div class="flex flex-row h-screen bg-slate-900">
+    <PageHeader />
   </div>
 </template>
 
-<script setup>
-import { onBeforeMount, ref } from "vue";
-import { categoriesQuery } from "./services/queries";
-import { api } from "./services/api";
-import "./style.css";
-
-const data = ref();
-onBeforeMount(async () => {
-  data.value = await api(categoriesQuery);
-});
-</script>
-
 <script>
-import Category from "./components/Category.vue";
+import PageHeader from "./views/PageHeader.vue";
+import "./style.css";
 export default {
-  components: { Category },
+  components: { PageHeader },
 };
 </script>
