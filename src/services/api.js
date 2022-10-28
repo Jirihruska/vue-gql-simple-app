@@ -6,7 +6,7 @@ export const api = async (graphqlQuery) => {
     await axios({
       baseURL: process.env.VUE_APP_BACKEND_URL,
       mode: "cors",
-      method: "get",
+      method: "post",
       headers: {
         "Access-Control-Allow-Headers":
           "origin, x-requested-with, content-type",
