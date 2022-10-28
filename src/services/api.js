@@ -2,14 +2,15 @@ import axios from "axios";
 
 export const api = async (graphqlQuery) => {
   const headers = {
-    "content-type": "application/json",
+    Accept: "*/*",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
   };
-  const endpoint = process.env.VUE_APP_BACKEND_URL;
   let res;
   try {
     await axios({
-      url: endpoint,
-      method: "get",
+      url: process.env.VUE_APP_BACKEND_URL,
+      method: "post",
       headers: headers,
       data: graphqlQuery,
     }).then((data) => {
